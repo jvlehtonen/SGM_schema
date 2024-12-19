@@ -182,8 +182,8 @@ CREATE TABLE `syngap_structural` (
   `foldx_ddG` decimal(4,2) DEFAULT NULL,
   `foldx_stddev` decimal(3,1) DEFAULT NULL,
   `rosetta_ddG` decimal(4,2) DEFAULT NULL,
-  `foldetta_ddG` decimal(4,2) DEFAULT NULL,
   `premPS_ddG` decimal(4,2) DEFAULT NULL,
+  `foldetta_ddG` decimal(4,2) AS (ROUND((foldx_ddG+rosetta_ddG)/2, 2)) VIRTUAL,
   PRIMARY KEY (`variant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
