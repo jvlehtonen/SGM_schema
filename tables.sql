@@ -1,4 +1,3 @@
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -9,6 +8,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 DROP TABLE IF EXISTS `aminoacids`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -19,6 +19,14 @@ CREATE TABLE `aminoacids` (
   PRIMARY KEY (`three`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+LOCK TABLES `aminoacids` WRITE;
+/*!40000 ALTER TABLE `aminoacids` DISABLE KEYS */;
+INSERT INTO `aminoacids` VALUES ('ala','A','alanine'),('arg','R','arginine'),('asn','N','asparagine'),('asp','D','aspartic acid'),('asx','B','asparagine or aspartic acid'),('cys','C','cysteine'),('gln','Q','glutamine'),('glu','E','glutamic acid'),('glx','Z','glutamine or glutamic acid'),('gly','G','glycine'),('his','H','histidine'),('ile','I','isoleucine'),('leu','L','leucine'),('lys','K','lysine'),('met','M','methionine'),('phe','F','phenylalanine'),('pro','P','proline'),('ser','S','serine'),('thr','T','threonine'),('trp','W','tryptophan'),('tyr','Y','tyrosine'),('val','V','valine');
+/*!40000 ALTER TABLE `aminoacids` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 DROP TABLE IF EXISTS `cdna`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -35,6 +43,8 @@ CREATE TABLE `cdna` (
   PRIMARY KEY (`cdna_change`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `clinvar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -51,6 +61,8 @@ CREATE TABLE `clinvar` (
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `clinvar_germline`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -61,6 +73,8 @@ CREATE TABLE `clinvar_germline` (
   PRIMARY KEY (`cv_description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `clinvar_review`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -70,6 +84,8 @@ CREATE TABLE `clinvar_review` (
   PRIMARY KEY (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `gnomAD`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -83,6 +99,8 @@ CREATE TABLE `gnomAD` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `syngap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -143,6 +161,8 @@ CREATE TABLE `syngap` (
   CONSTRAINT `fk_verdict` FOREIGN KEY (`verdictID`) REFERENCES `syngap_verdict` (`verdictID`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `syngap_domain`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -152,6 +172,8 @@ CREATE TABLE `syngap_domain` (
   PRIMARY KEY (`domainID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `syngap_structural`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -165,6 +187,8 @@ CREATE TABLE `syngap_structural` (
   PRIMARY KEY (`variant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `syngap_verdict`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -174,6 +198,8 @@ CREATE TABLE `syngap_verdict` (
   PRIMARY KEY (`verdictID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
