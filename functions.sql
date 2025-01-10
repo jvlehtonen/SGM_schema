@@ -97,4 +97,13 @@ BEGIN
   RETURN pred;
 END //
 
+CREATE OR REPLACE FUNCTION point_mutation(val varchar(6)) RETURNS char(2)
+BEGIN
+  DECLARE src char(1);
+  DECLARE dst char(1);
+  SET src = LEFT(val, 1);
+  SET dst = RIGHT(val, 1);
+  RETURN CONCAT(src, dst);
+END //
+
 DELIMITER ;
