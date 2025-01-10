@@ -22,7 +22,29 @@ CREATE TABLE `aminoacids` (
 
 LOCK TABLES `aminoacids` WRITE;
 /*!40000 ALTER TABLE `aminoacids` DISABLE KEYS */;
-INSERT INTO `aminoacids` VALUES ('ala','A','alanine'),('arg','R','arginine'),('asn','N','asparagine'),('asp','D','aspartic acid'),('asx','B','asparagine or aspartic acid'),('cys','C','cysteine'),('gln','Q','glutamine'),('glu','E','glutamic acid'),('glx','Z','glutamine or glutamic acid'),('gly','G','glycine'),('his','H','histidine'),('ile','I','isoleucine'),('leu','L','leucine'),('lys','K','lysine'),('met','M','methionine'),('phe','F','phenylalanine'),('pro','P','proline'),('ser','S','serine'),('thr','T','threonine'),('trp','W','tryptophan'),('tyr','Y','tyrosine'),('val','V','valine');
+INSERT INTO `aminoacids` VALUES
+  ('ala','A','alanine'),
+  ('arg','R','arginine'),
+  ('asn','N','asparagine'),
+  ('asp','D','aspartic acid'),
+  ('asx','B','asparagine or aspartic acid'),
+  ('cys','C','cysteine'),
+  ('gln','Q','glutamine'),
+  ('glu','E','glutamic acid'),
+  ('glx','Z','glutamine or glutamic acid'),
+  ('gly','G','glycine'),
+  ('his','H','histidine'),
+  ('ile','I','isoleucine'),
+  ('leu','L','leucine'),
+  ('lys','K','lysine'),
+  ('met','M','methionine'),
+  ('phe','F','phenylalanine'),
+  ('pro','P','proline'),
+  ('ser','S','serine'),
+  ('thr','T','threonine'),
+  ('trp','W','tryptophan'),
+  ('tyr','Y','tyrosine'),
+  ('val','V','valine');
 /*!40000 ALTER TABLE `aminoacids` ENABLE KEYS */;
 UNLOCK TABLES;
 
