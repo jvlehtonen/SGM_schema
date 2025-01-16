@@ -6,6 +6,8 @@ Each c.dna change may have data in ClinVar and gnomAD databases. A 'variant' is 
 in protein sequence (HGVSp) that affects how the change affects protein.
 
 The 'syngap' and 'syngap_structural' tables hold collected or computed predictions about variants.
+The name "syngap" is due to the schema being created originally to store data for SYNGAP1 gene
+(synaptic Ras GTPase activating protein 1).
 
 
 ```
