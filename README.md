@@ -1,6 +1,13 @@
 # SGM_schema
 Schema for MariaDB database that has pathogenicity predictions for a gene
 
+The 'cdna' could be considered the main table; one entry per unique c.dna change (aka HGVSc).
+Each c.dna change may have data in ClinVar and gnomAD databases. A 'variant' is observed change
+in protein sequence (HGVSp) that affects how the change affects protein.
+
+The 'syngap' and 'syngap_structural' tables hold collected or computed predictions about variants.
+
+
 ```
 +----------------------+
 | Tables_in_syngap     |
@@ -63,3 +70,6 @@ erDiagram
 * 'functions.sql' adds functions that create verbal predictions for scores
 * 'views.sql' adds views/queries that combine columns for "single tables".
   Views depend on functions and tables
+
+Create preferably two SQL users, one with write access and second with read-only.
+Use the first for content updates and the second on website that shows content to public.
