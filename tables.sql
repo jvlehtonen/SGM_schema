@@ -130,12 +130,6 @@ CREATE TABLE `syngap` (
   `variant` varchar(6) NOT NULL,
   `deltaMW` decimal(10,4),
   `deltaHydropathy` decimal(4,1),
-  `sasa_average` decimal(5,1) DEFAULT NULL,
-  `sasa_delta` decimal(4,1) DEFAULT NULL,
-  `Bfactor_backbone_delta` decimal(3,1) DEFAULT NULL,
-  `Bfactor_backbone_stddev` decimal(3,1) DEFAULT NULL,
-  `Bfactor_sidechain_delta` decimal(3,1) DEFAULT NULL,
-  `Bfactor_sidechain_stddev` decimal(3,1) DEFAULT NULL,
   `polyPhen2_HumDiv_predict` varchar(20),
   `polyPhen2_HumDiv_pph2_prob` decimal(5,3),
   `polyPhen2_HumVar_predict` varchar(20),
@@ -151,24 +145,13 @@ CREATE TABLE `syngap` (
   `FATHMM_Diseasespecific_Nervous_System_Score` decimal(4,2) DEFAULT NULL,
   `AlphaMissense_Pathogenicity` decimal(4,3),
   `AlphaMissense_Class` varchar(20),
-  `SA_Secondary` tinyint(1) DEFAULT NULL,
-  `SA_Tertiary` tinyint(1) DEFAULT NULL,
-  `SA_Buried` tinyint(1) DEFAULT NULL,
-  `SA_GAP_Ras_interface` tinyint(1) DEFAULT NULL,
-  `SA_Membrane_interface` tinyint(1) DEFAULT NULL,
-  `SA_Benign` tinyint(1) DEFAULT NULL,
-  `Alert` tinyint(1) DEFAULT NULL,
-  `description` text DEFAULT NULL,
   `domainID` tinyint(3) unsigned NOT NULL,
-  `verdictID` tinyint(3) unsigned DEFAULT NULL,
   `structure` tinyint(3) unsigned NOT NULL DEFAULT 0 COMMENT '0=none, 1=structure, 2=MD-structure',
   `doi` varchar(32) DEFAULT NULL COMMENT 'Link to article',
   `provean_score` decimal(4,2) DEFAULT NULL,
   PRIMARY KEY (`variant`),
   KEY `domainID` (`domainID`),
-  KEY `verdictID` (`verdictID`),
   CONSTRAINT `fk_domain` FOREIGN KEY (`domainID`) REFERENCES `syngap_domain` (`domainID`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_verdict` FOREIGN KEY (`verdictID`) REFERENCES `syngap_verdict` (`verdictID`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -208,6 +191,34 @@ CREATE TABLE `syngap_verdict` (
   PRIMARY KEY (`verdictID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `syngap_sa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `syngap_sa` (
+  `variant` varchar(6) NOT NULL,
+  `Bfactor_backbone_delta` decimal(3,1) NOT NULL,
+  `Bfactor_backbone_stddev` decimal(3,1) NOT NULL,
+  `Bfactor_sidechain_delta` decimal(3,1) NOT NULL,
+  `Bfactor_sidechain_stddev` decimal(3,1) NOT NULL,
+  `sasa_average` decimal(5,1) NOT NULL,
+  `sasa_delta` decimal(4,1) NOT NULL,
+  `SA_Secondary` tinyint(1) NOT NULL,
+  `SA_Tertiary` tinyint(1) NOT NULL,
+  `SA_Buried` tinyint(1) NOT NULL,
+  `SA_GAP_Ras_interface` tinyint(1) NOT NULL,
+  `SA_Membrane_interface` tinyint(1) NOT NULL,
+  `SA_Benign` tinyint(1) NOT NULL,
+  `Alert` tinyint(1) NOT NULL,
+  `description` text DEFAULT NULL,
+  `verdictID` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY (`variant`),
+  KEY `verdictID` (`verdictID`),
+  CONSTRAINT `fk_verdict` FOREIGN KEY (`verdictID`) REFERENCES `syngap_verdict` (`verdictID`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
