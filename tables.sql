@@ -146,7 +146,6 @@ CREATE TABLE `syngap` (
   `SIFT_animal_Predict` decimal(4,2) DEFAULT NULL,
   `SIFT_animal_Conservation` decimal(4,2) DEFAULT NULL,
   `SIFT_animal_Sequences` smallint(5) unsigned DEFAULT NULL,
-  `SIFT_animal_Warnings` varchar(10) DEFAULT NULL,
   `PAM250` tinyint(4),
   `PAM120` tinyint(4),
   `ESM1b_Q96PV0_LLRscore` decimal(6,3),
