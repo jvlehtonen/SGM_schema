@@ -20,12 +20,15 @@ The name "syngap" is due to the schema being created originally to store data fo
 | clinvar_germline     |
 | clinvar_review       |
 | gnomAD               |
+| predictions          |
 | syngap               |
 | syngap_domain        |
+| syngap_sa            |
 | syngap_structural    |
 | syngap_verdict       |
 +----------------------+
 ```
+The aminoacids, clinvar_germline, clinvar_review, predictions, syngap_domain, and syngap_verdict are (code->text) lookup tables.
 
 ```
 +----------------------+
@@ -38,13 +41,15 @@ The name "syngap" is due to the schema being created originally to store data fo
 | for_datatable        |
 +----------------------+
 ```
+The for_csv and for_datatable are views that combine/collect data for single CSV table and for display on SGM website, respectively.
 
 ```mermaid
 erDiagram
-    clinvar ||--o| cdna : a
-    gnomAD ||--o| cdna : a
-    cdna }|--|| syngap : a
-    syngap ||--o| syngap_structural : a
+    clinvar ||--o| cdna : ""
+    gnomAD ||--o| cdna : ""
+    cdna }|--|| syngap : ""
+    cdna }|--o| syngap_structural : ""
+    cdna }|--o| syngap_sa : ""
     clinvar{
         int uid PK
     }
@@ -63,6 +68,9 @@ erDiagram
         string variant PK
     }
     syngap_structural{
+        string variant PK
+    }
+    syngap_sa{
         string variant PK
     }
 ```
