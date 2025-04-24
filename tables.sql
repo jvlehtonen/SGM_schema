@@ -150,7 +150,7 @@ CREATE TABLE `syngap` (
   `PAM120` tinyint(4),
   `ESM1b_Q96PV0_LLRscore` decimal(6,3),
   `FATHMM_Diseasespecific_Nervous_System_Score` decimal(4,2) DEFAULT NULL,
-  `AlphaMissense_Pathogenicity` decimal(4,3),
+  `AlphaMissense_Pathogenicity` decimal(5,4) DEFAULT NULL,
   `domainID` tinyint(3) unsigned NOT NULL,
   `structure` tinyint(3) unsigned NOT NULL DEFAULT 0 COMMENT '0=none, 1=structure, 2=MD-structure',
   `doi` varchar(32) DEFAULT NULL COMMENT 'Link to article',
