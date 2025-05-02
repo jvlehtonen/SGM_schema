@@ -9,42 +9,44 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP TABLE IF EXISTS `aminoacids`;
+DROP TABLE IF EXISTS 'aminoacids';
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `aminoacids` (
-  `three` char(3) NOT NULL,
-  `one` char(1) NOT NULL,
-  `description` varchar(29) DEFAULT NULL,
-  PRIMARY KEY (`three`)
+CREATE TABLE 'aminoacids' (
+  'three' char(3) NOT NULL,
+  'one' char(1) NOT NULL,
+  'description' varchar(29) DEFAULT NULL,
+  'weight' decimal(10,4) DEFAULT NULL COMMENT 'molecular weight',
+  'hydropathy' decimal(4,1) DEFAULT NULL COMMENT 'scale based on Kyte & Doolittle',
+  PRIMARY KEY ('three')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES `aminoacids` WRITE;
+LOCK TABLES 'aminoacids' WRITE;
 /*!40000 ALTER TABLE `aminoacids` DISABLE KEYS */;
-INSERT INTO `aminoacids` VALUES
-  ('ala','A','alanine'),
-  ('arg','R','arginine'),
-  ('asn','N','asparagine'),
-  ('asp','D','aspartic acid'),
-  ('asx','B','asparagine or aspartic acid'),
-  ('cys','C','cysteine'),
-  ('gln','Q','glutamine'),
-  ('glu','E','glutamic acid'),
-  ('glx','Z','glutamine or glutamic acid'),
-  ('gly','G','glycine'),
-  ('his','H','histidine'),
-  ('ile','I','isoleucine'),
-  ('leu','L','leucine'),
-  ('lys','K','lysine'),
-  ('met','M','methionine'),
-  ('phe','F','phenylalanine'),
-  ('pro','P','proline'),
-  ('ser','S','serine'),
-  ('thr','T','threonine'),
-  ('trp','W','tryptophan'),
-  ('tyr','Y','tyrosine'),
-  ('val','V','valine');
+INSERT INTO 'aminoacids' VALUES
+  ('ala', 'A', 'alanine',        71.0788,  1.8),
+  ('arg', 'R', 'arginine',      156.1875, -4.5),
+  ('asn', 'N', 'asparagine',    114.1038, -3.5),
+  ('asp', 'D', 'aspartic acid', 115.0886, -3.5),
+  ('asx', 'B', 'asparagine or aspartic acid', NULL, NULL),
+  ('cys', 'C', 'cysteine',      103.1388,  2.5),
+  ('gln', 'Q', 'glutamine',     128.1307, -3.5),
+  ('glu', 'E', 'glutamic acid', 129.1155, -3.5),
+  ('glx', 'Z', 'glutamine or glutamic acid', NULL, NULL),
+  ('gly', 'G', 'glycine',        57.0519, -0.4),
+  ('his', 'H', 'histidine',     137.1411, -3.2),
+  ('ile', 'I', 'isoleucine',    113.1594,  4.5),
+  ('leu', 'L', 'leucine',       113.1594,  3.8),
+  ('lys', 'K', 'lysine',        128.1741, -3.9),
+  ('met', 'M', 'methionine',    131.1926,  1.9),
+  ('phe', 'F', 'phenylalanine', 147.1766,  2.8),
+  ('pro', 'P', 'proline',        97.1167, -1.6),
+  ('ser', 'S', 'serine',         87.0782, -0.8),
+  ('thr', 'T', 'threonine',     101.1051, -0.7),
+  ('trp', 'W', 'tryptophan',    186.2132, -0.9),
+  ('tyr', 'Y', 'tyrosine',      163.1760, -1.3),
+  ('val', 'V', 'valine',         99.1326,  4.2);
 /*!40000 ALTER TABLE `aminoacids` ENABLE KEYS */;
 UNLOCK TABLES;
 
