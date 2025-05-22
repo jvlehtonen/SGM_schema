@@ -170,6 +170,8 @@ DROP TABLE IF EXISTS `syngap_domain`;
 CREATE TABLE `syngap_domain` (
   `domainID` tinyint(3) unsigned NOT NULL,
   `domain` varchar(20) NOT NULL,
+  `first`  smallint(5) unsigned DEFAULT NULL,
+  `last`   smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`domainID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
