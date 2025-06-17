@@ -157,9 +157,10 @@ CREATE TABLE `syngap` (
   `structure` tinyint(3) unsigned NOT NULL DEFAULT 0 COMMENT '0=none, 1=structure, 2=MD-structure',
   `doi` varchar(32) DEFAULT NULL COMMENT 'Link to article',
   `provean_score` decimal(4,2) DEFAULT NULL,
+  `consensus` varchar(20) DEFAULT NULL COMMENT 'precomputed from other methods',
   PRIMARY KEY (`variant`),
   KEY `domainID` (`domainID`),
-  CONSTRAINT `fk_domain` FOREIGN KEY (`domainID`) REFERENCES `syngap_domain` (`domainID`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_domain` FOREIGN KEY (`domainID`) REFERENCES `syngap_domain` (`domainID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
