@@ -57,7 +57,8 @@ DROP TABLE IF EXISTS `predictions`;
 CREATE TABLE `predictions` (
   `method`      varchar(15)  NOT NULL,
   `threshold`   decimal(7,4) NOT NULL,
-  `description` varchar(20)  NOT NULL
+  `description` varchar(20)  NOT NULL,
+  `reduced`     varchar(10)  NOT NULL COMMENT 'Simplified description',
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -103,8 +104,9 @@ DROP TABLE IF EXISTS `clinvar_germline`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clinvar_germline` (
   `cv_description` varchar(50) NOT NULL,
-  `cv_rank` tinyint(3) NOT NULL,
+  `cv_rank`   tinyint(3)  NOT NULL,
   `cv_status` varchar(24) NOT NULL,
+  `reduced`   varchar(10) NOT NULL COMMENT 'Simplified description',
   PRIMARY KEY (`cv_description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

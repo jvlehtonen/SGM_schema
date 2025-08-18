@@ -18,6 +18,14 @@ BEGIN
 END //
 
 
+CREATE OR REPLACE FUNCTION prediction_reduced(method varchar(15), val decimal(7,4)) RETURNS varchar(20)
+BEGIN
+  DECLARE pred varchar(20);
+  SET pred = (SELECT p.reduced FROM predictions AS p WHERE p.method = method AND val < p.threshold ORDER BY p.threshold ASC LIMIT 1);
+  RETURN pred;
+END //
+
+
 CREATE OR REPLACE FUNCTION variant2resnum(val varchar(6)) RETURNS smallint(5) unsigned
 BEGIN
   DECLARE resnum int;
