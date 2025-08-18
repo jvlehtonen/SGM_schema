@@ -64,6 +64,7 @@ syngap_sa.Alert AS `Alert`,
 syngap_sa.verdictID AS `verdictID`,
 syngap_verdict.verdict AS `verdict`,
 syngap_sa.description AS `description`,
+ai_summary.summary AS summary,
 syngap.structure AS `structure`,
 syngap.doi AS `doi`
 FROM cdna
@@ -75,7 +76,9 @@ LEFT JOIN syngap            ON cdna.variant  = syngap.variant
 LEFT JOIN syngap_structural ON cdna.variant = syngap_structural.variant
 LEFT JOIN syngap_sa         ON cdna.variant  = syngap_sa.variant
 LEFT JOIN syngap_verdict    ON syngap_sa.verdictID = syngap_verdict.verdictID
-LEFT JOIN syngap_domain     ON syngap.domainID = syngap_domain.domainID ;
+LEFT JOIN syngap_domain     ON syngap.domainID = syngap_domain.domainID
+LEFT JOIN ai_summary        ON cdna.cdna_change = ai_summary.cdna_change
+;
 
 CREATE OR REPLACE VIEW `for_HGVSp_to_variant` AS SELECT
 HGVSp,
