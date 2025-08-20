@@ -9,22 +9,22 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP TABLE IF EXISTS 'aminoacids';
+DROP TABLE IF EXISTS `aminoacids`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE 'aminoacids' (
-  'three' char(3) NOT NULL,
-  'one' char(1) NOT NULL,
-  'description' varchar(29) DEFAULT NULL,
-  'weight' decimal(10,4) DEFAULT NULL COMMENT 'molecular weight',
-  'hydropathy' decimal(4,1) DEFAULT NULL COMMENT 'scale based on Kyte & Doolittle',
-  PRIMARY KEY ('three')
+CREATE TABLE `aminoacids` (
+  `three` char(3) NOT NULL,
+  `one` char(1) NOT NULL,
+  `description` varchar(29) DEFAULT NULL,
+  `weight` decimal(10,4) DEFAULT NULL COMMENT 'molecular weight',
+  `hydropathy` decimal(4,1) DEFAULT NULL COMMENT 'scale based on Kyte & Doolittle',
+  PRIMARY KEY (`three`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES 'aminoacids' WRITE;
+LOCK TABLES `aminoacids` WRITE;
 /*!40000 ALTER TABLE `aminoacids` DISABLE KEYS */;
-INSERT INTO 'aminoacids' VALUES
+INSERT INTO `aminoacids` VALUES
   ('ala', 'A', 'alanine',        71.0788,  1.8),
   ('arg', 'R', 'arginine',      156.1875, -4.5),
   ('asn', 'N', 'asparagine',    114.1038, -3.5),
