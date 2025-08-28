@@ -58,7 +58,7 @@ CREATE TABLE `predictions` (
   `method`      varchar(15)  NOT NULL,
   `threshold`   decimal(7,4) NOT NULL,
   `description` varchar(20)  NOT NULL,
-  `reduced`     varchar(10)  NOT NULL COMMENT 'Simplified description',
+  `reduced`     varchar(10)  NOT NULL COMMENT 'Simplified description'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
