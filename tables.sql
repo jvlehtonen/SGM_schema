@@ -195,6 +195,24 @@ CREATE TABLE `syngap_structural` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
+DROP TABLE IF EXISTS `psmutpred`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `psmutpred` (
+  `variant`    varchar(6) NOT NULL,
+  `score_ip_rf` decimal(5,4) DEFAULT NULL,
+  `score_ip_svr` decimal(5,4) DEFAULT NULL,
+  `score_sp_lr` decimal(5,4) DEFAULT NULL,
+  `score_sp_rf` decimal(5,4) DEFAULT NULL,
+  `rank_ip_rf` decimal(5,4) DEFAULT NULL,
+  `rank_ip_svr` decimal(5,4) DEFAULT NULL,
+  `rank_sp_lr` decimal(5,4) DEFAULT NULL,
+  `rank_sp_rf` decimal(5,4) DEFAULT NULL,
+  PRIMARY KEY (`variant`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `syngap_verdict`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
