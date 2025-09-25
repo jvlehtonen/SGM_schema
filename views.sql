@@ -39,6 +39,10 @@ syngap.SIFT_animal_Predict AS `SIFT_animal_Predict`,
 prediction_text('sift', syngap.SIFT_animal_Predict) AS `SIFT_animal_Warnings`,
 syngap.SIFT_animal_Conservation AS `SIFT_animal_Conservation`,
 syngap.SIFT_animal_Sequences AS `SIFT_animal_Sequences`,
+iupred2a.iupred AS `IUPred`,
+prediction_text('iupred', iupred2a.iupred) AS `IUPred_predict`,
+iupred2a.anchor AS `ANCHOR`,
+prediction_text('anchor', iupred2a.anchor) AS `ANCHOR_predict`,
 syngap.PAM250 AS `PAM250`,
 syngap.PAM120 AS `PAM120`,
 syngap.ESM1b_Q96PV0_LLRscore AS `ESM1b_Q96PV0_LLRscore`,
@@ -78,6 +82,7 @@ LEFT JOIN syngap_sa         ON cdna.variant  = syngap_sa.variant
 LEFT JOIN syngap_verdict    ON syngap_sa.verdictID = syngap_verdict.verdictID
 LEFT JOIN syngap_domain     ON syngap.domainID = syngap_domain.domainID
 LEFT JOIN ai_summary        ON cdna.cdna_change = ai_summary.cdna_change
+LEFT JOIN iupred2a          ON cdna.resnum = iupred2a.resnum
 ;
 
 CREATE OR REPLACE VIEW `for_HGVSp_to_variant` AS SELECT
@@ -130,6 +135,8 @@ syngap.FATHMM_Diseasespecific_Nervous_System_Score AS `FATHMM Nervous System Sco
 prediction_text('fathmm', syngap.FATHMM_Diseasespecific_Nervous_System_Score) AS `FATHMM_predict`,
 syngap.SIFT_animal_Predict AS `SIFT Prediction`,
 prediction_text('sift', syngap.SIFT_animal_Predict) AS `SIFT_predict`,
+iupred2a.iupred AS `IUPred`,
+iupred2a.anchor AS `ANCHOR`,
 syngap.PAM250 AS `PAM250`,
 syngap.PAM120 AS `PAM120`,
 syngap.deltaHydropathy AS `dHydropathy`,
@@ -158,4 +165,5 @@ LEFT JOIN syngap_verdict    ON syngap_sa.verdictID = syngap_verdict.verdictID
 LEFT JOIN syngap_domain     ON syngap.domainID = syngap_domain.domainID
 LEFT JOIN clinvar           ON cdna.clinvar_uid = clinvar.uid
 LEFT JOIN clinvar_germline  ON clinvar.germline_desc = clinvar_germline.cv_description
+LEFT JOIN iupred2a          ON cdna.resnum = iupred2a.resnum
 ORDER BY cdna.basenum,cdna.variant ASC;
