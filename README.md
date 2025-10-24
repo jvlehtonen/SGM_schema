@@ -14,6 +14,8 @@ The name "syngap" is due to the schema being created originally to store data fo
 +----------------------+
 | Tables_in_syngap     |
 +----------------------+
+| AF_Q96PV0_F1_hg38    |
+| ai_summary           |
 | aminoacids           |
 | cdna                 |
 | clinvar              |
@@ -21,6 +23,7 @@ The name "syngap" is due to the schema being created originally to store data fo
 | clinvar_review       |
 | gnomAD               |
 | predictions          |
+| iupred2a             |
 | syngap               |
 | syngap_domain        |
 | syngap_sa            |
