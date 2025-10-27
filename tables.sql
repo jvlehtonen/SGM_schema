@@ -22,6 +22,7 @@ CREATE TABLE `aminoacids` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
 LOCK TABLES `aminoacids` WRITE;
 /*!40000 ALTER TABLE `aminoacids` DISABLE KEYS */;
 INSERT INTO `aminoacids` VALUES
@@ -77,6 +78,17 @@ CREATE TABLE `cdna` (
   `resnum` smallint(5) unsigned DEFAULT NULL,
   `revel_score` decimal(4,3) DEFAULT NULL,
   PRIMARY KEY (`cdna_change`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `updated`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `updated` (
+  `repo` varchar(20) NOT NULL,
+  `last` DATE DEFAULT CURRENT_DATE(),
+  PRIMARY KEY (`repo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
