@@ -43,6 +43,14 @@ iupred2a.iupred AS `IUPred`,
 prediction_text('iupred', iupred2a.iupred) AS `IUPred_predict`,
 iupred2a.anchor AS `ANCHOR`,
 prediction_text('anchor', iupred2a.anchor) AS `ANCHOR_predict`,
+psmutpred.score_ip_rf AS `psmutpred_score_ip_rf`,
+psmutpred.score_ip_svr AS `psmutpred_score_ip_svr`,
+psmutpred.score_sp_lr AS `psmutpred_score_sp_lr`,
+psmutpred.score_sp_rf AS `psmutpred_score_sp_rf`,
+psmutpred.rank_ip_rf AS `psmutpred_rank_ip_rf`,
+psmutpred.rank_ip_svr AS `psmutpred_rank_ip_svr`,
+psmutpred.rank_sp_lr AS `psmutpred_rank_sp_lr`,
+psmutpred.rank_sp_rf AS `psmutpred_rank_sp_rf`,
 syngap.PAM250 AS `PAM250`,
 syngap.PAM120 AS `PAM120`,
 syngap.ESM1b_Q96PV0_LLRscore AS `ESM1b_Q96PV0_LLRscore`,
@@ -83,6 +91,7 @@ LEFT JOIN syngap_verdict    ON syngap_sa.verdictID = syngap_verdict.verdictID
 LEFT JOIN syngap_domain     ON syngap.domainID = syngap_domain.domainID
 LEFT JOIN ai_summary        ON cdna.cdna_change = ai_summary.cdna_change
 LEFT JOIN iupred2a          ON cdna.resnum = iupred2a.resnum
+LEFT JOIN psmutpred         ON cdna.variant = psmutpred.variant
 ;
 
 CREATE OR REPLACE VIEW `for_HGVSp_to_variant` AS SELECT
@@ -137,6 +146,14 @@ syngap.SIFT_animal_Predict AS `SIFT Prediction`,
 prediction_text('sift', syngap.SIFT_animal_Predict) AS `SIFT_predict`,
 iupred2a.iupred AS `IUPred`,
 iupred2a.anchor AS `ANCHOR`,
+psmutpred.score_ip_rf AS `psmutpred_score_ip_rf`,
+psmutpred.score_ip_svr AS `psmutpred_score_ip_svr`,
+psmutpred.score_sp_lr AS `psmutpred_score_sp_lr`,
+psmutpred.score_sp_rf AS `psmutpred_score_sp_rf`,
+psmutpred.rank_ip_rf AS `psmutpred_rank_ip_rf`,
+psmutpred.rank_ip_svr AS `psmutpred_rank_ip_svr`,
+psmutpred.rank_sp_lr AS `psmutpred_rank_sp_lr`,
+psmutpred.rank_sp_rf AS `psmutpred_rank_sp_rf`,
 syngap.PAM250 AS `PAM250`,
 syngap.PAM120 AS `PAM120`,
 syngap.deltaHydropathy AS `dHydropathy`,
@@ -166,4 +183,5 @@ LEFT JOIN syngap_domain     ON syngap.domainID = syngap_domain.domainID
 LEFT JOIN clinvar           ON cdna.clinvar_uid = clinvar.uid
 LEFT JOIN clinvar_germline  ON clinvar.germline_desc = clinvar_germline.cv_description
 LEFT JOIN iupred2a          ON cdna.resnum = iupred2a.resnum
+LEFT JOIN psmutpred         ON cdna.variant = psmutpred.variant
 ORDER BY cdna.basenum,cdna.variant ASC;
