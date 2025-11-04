@@ -53,6 +53,9 @@ psmutpred.rank_sp_lr AS `psmutpred_rank_sp_lr`,
 psmutpred.rank_sp_rf AS `psmutpred_rank_sp_rf`,
 prediction_text('psmutpred_ip', psmutpred.score_ip_rf) AS `psmutpred_ip`,
 prediction_text('psmutpred_sp', psmutpred.score_sp_rf) AS `psmutpred_sp`,
+mobidb.af_disorder AS `af_disorder`,
+mobidb.af_plddt AS `af_plddt`,
+mobidb.mobidb_lite_disorder AS `mobidb_lite_disorder`,
 syngap.PAM250 AS `PAM250`,
 syngap.PAM120 AS `PAM120`,
 syngap.ESM1b_Q96PV0_LLRscore AS `ESM1b_Q96PV0_LLRscore`,
@@ -94,6 +97,7 @@ LEFT JOIN syngap_domain     ON syngap.domainID = syngap_domain.domainID
 LEFT JOIN ai_summary        ON cdna.cdna_change = ai_summary.cdna_change
 LEFT JOIN iupred2a          ON cdna.resnum = iupred2a.resnum
 LEFT JOIN psmutpred         ON cdna.variant = psmutpred.variant
+LEFT JOIN mobidb            ON cdna.resnum = mobidb.resnum
 ;
 
 CREATE OR REPLACE VIEW `for_HGVSp_to_variant` AS SELECT
@@ -156,6 +160,9 @@ psmutpred.rank_ip_rf AS `psmutpred_rank_ip_rf`,
 psmutpred.rank_ip_svr AS `psmutpred_rank_ip_svr`,
 psmutpred.rank_sp_lr AS `psmutpred_rank_sp_lr`,
 psmutpred.rank_sp_rf AS `psmutpred_rank_sp_rf`,
+mobidb.af_disorder AS `af_disorder`,
+mobidb.af_plddt AS `af_plddt`,
+mobidb.mobidb_lite_disorder AS `mobidb_lite_disorder`,
 syngap.PAM250 AS `PAM250`,
 syngap.PAM120 AS `PAM120`,
 syngap.deltaHydropathy AS `dHydropathy`,
@@ -186,4 +193,5 @@ LEFT JOIN clinvar           ON cdna.clinvar_uid = clinvar.uid
 LEFT JOIN clinvar_germline  ON clinvar.germline_desc = clinvar_germline.cv_description
 LEFT JOIN iupred2a          ON cdna.resnum = iupred2a.resnum
 LEFT JOIN psmutpred         ON cdna.variant = psmutpred.variant
+LEFT JOIN mobidb            ON cdna.resnum = mobidb.resnum
 ORDER BY cdna.basenum,cdna.variant ASC;

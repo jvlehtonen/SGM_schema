@@ -219,6 +219,19 @@ CREATE TABLE `iupred2a` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
+DROP TABLE IF EXISTS `mobidb`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mobidb` (
+  `resnum`      smallint(5) unsigned DEFAULT NULL,
+  `af_disorder` decimal(4,3) DEFAULT NULL COMMENT 'AlphaFold disorder',
+  `af_plddt`    decimal(4,3) DEFAULT NULL COMMENT 'AlphaFold pLDDT',
+  `mobidb_lite_disorder` decimal(4,3) DEFAULT NULL,
+  PRIMARY KEY (`resnum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `psmutpred`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
