@@ -232,6 +232,21 @@ CREATE TABLE `mobidb` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
+DROP TABLE IF EXISTS `phosphositeplus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `phosphositeplus` (
+  `resnum`      smallint(5) unsigned NOT NULL,
+  `ltp`         smallint(4) unsigned COMMENT 'LTP count',
+  `htp`         smallint(4) unsigned COMMENT 'HTP count',
+  `psp_id`      int(10) unsigned     COMMENT 'PSP entry',
+  `kl_id`       int(10) unsigned     COMMENT 'Kinase Library entry',
+  `ptm`         varchar(5)           COMMENT 'Post-translational modification',
+  PRIMARY KEY (`resnum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 DROP TABLE IF EXISTS `psmutpred`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

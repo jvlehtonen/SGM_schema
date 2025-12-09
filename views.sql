@@ -56,6 +56,11 @@ prediction_text('psmutpred_sp', psmutpred.score_sp_rf) AS `psmutpred_sp`,
 mobidb.af_disorder AS `af_disorder`,
 mobidb.af_plddt AS `af_plddt`,
 mobidb.mobidb_lite_disorder AS `mobidb_lite_disorder`,
+phosphositeplus.ltp AS psp_ltp,
+phosphositeplus.htp AS psp_htp,
+phosphositeplus.psp_id AS psp_id,
+phosphositeplus.kl_id AS psp_kl,
+phosphositeplus.ptm AS psp_ptm,
 syngap.PAM250 AS `PAM250`,
 syngap.PAM120 AS `PAM120`,
 syngap.ESM1b_Q96PV0_LLRscore AS `ESM1b_Q96PV0_LLRscore`,
@@ -98,6 +103,7 @@ LEFT JOIN ai_summary        ON cdna.cdna_change = ai_summary.cdna_change
 LEFT JOIN iupred2a          ON cdna.resnum = iupred2a.resnum
 LEFT JOIN psmutpred         ON cdna.variant = psmutpred.variant
 LEFT JOIN mobidb            ON cdna.resnum = mobidb.resnum
+LEFT JOIN phosphositeplus   ON cdna.resnum = phosphositeplus.resnum
 ;
 
 CREATE OR REPLACE VIEW `for_HGVSp_to_variant` AS SELECT
