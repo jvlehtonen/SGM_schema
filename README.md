@@ -24,14 +24,19 @@ The name "syngap" is due to the schema being created originally to store data fo
 | gnomAD               |
 | predictions          |
 | iupred2a             |
+| mobidb               |
+| phosphositeplus      |
+| predictions          |
+| psmutpred            |
 | syngap               |
 | syngap_domain        |
 | syngap_sa            |
 | syngap_structural    |
 | syngap_verdict       |
+| updated              |
 +----------------------+
 ```
-The aminoacids, clinvar_germline, clinvar_review, predictions, syngap_domain, and syngap_verdict are (code->text) lookup tables.
+The aminoacids, clinvar_germline, clinvar_review, predictions, syngap_domain, syngap_verdict, and updated are (code->text) lookup tables.
 
 ```
 +----------------------+
@@ -76,6 +81,25 @@ erDiagram
     syngap_sa{
         string variant PK
     }
+```
+
+Joins that are used:
+```
+FROM cdna
+LEFT JOIN clinvar           ON cdna.clinvar_uid = clinvar.uid
+LEFT JOIN clinvar_review    ON clinvar.review_status = clinvar_review.status
+LEFT JOIN clinvar_germline  ON clinvar.germline_desc = clinvar_germline.cv_description
+LEFT JOIN gnomAD            ON cdna.gnomad_id  = gnomAD.id
+LEFT JOIN syngap            ON cdna.variant = syngap.variant
+LEFT JOIN syngap_structural ON cdna.variant = syngap_structural.variant
+LEFT JOIN syngap_sa         ON cdna.variant = syngap_sa.variant
+LEFT JOIN psmutpred         ON cdna.variant = psmutpred.variant
+LEFT JOIN iupred2a          ON cdna.resnum  = iupred2a.resnum
+LEFT JOIN mobidb            ON cdna.resnum  = mobidb.resnum
+LEFT JOIN phosphositeplus   ON cdna.resnum  = phosphositeplus.resnum
+LEFT JOIN ai_summary        ON cdna.cdna_change = ai_summary.cdna_change
+LEFT JOIN syngap_domain     ON syngap.domainID     = syngap_domain.domainID
+LEFT JOIN syngap_verdict    ON syngap_sa.verdictID = syngap_verdict.verdictID
 ```
 
 ## Installation
